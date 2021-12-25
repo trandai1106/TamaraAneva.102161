@@ -62,26 +62,27 @@ export default class Level01 extends Phaser.Scene {
         this.frames = [];
         var _frame = this.add.graphics();
         _frame.lineStyle(3, 0xF36F21, 1);    
-        this.frames.push(_frame.strokeRoundedRect(340, 170, size, size, frameStyle));
-        this.add.text(354, 180, '1', textAnswerStyle);
-        this.frames.push(_frame.strokeRoundedRect(544, 170, size, size, frameStyle));
-        this.add.text(568, 180, '2', textAnswerStyle);
-        this.frames.push(_frame.strokeRoundedRect(340, 374, size, size, frameStyle));
-        this.add.text(354, 384, '3', textAnswerStyle);
-        this.frames.push(_frame.strokeRoundedRect(544, 374, size, size, frameStyle));
-        this.add.text(568, 384, '4', textAnswerStyle);
+        this.frames.push(_frame.strokeRoundedRect(320, 170, size, size, frameStyle));
+        this.add.text(334, 180, '1', textAnswerStyle);
+        this.frames.push(_frame.strokeRoundedRect(524, 170, size, size, frameStyle));
+        this.add.text(548, 180, '2', textAnswerStyle);
+        this.frames.push(_frame.strokeRoundedRect(320, 374, size, size, frameStyle));
+        this.add.text(334, 384, '3', textAnswerStyle);
+        this.frames.push(_frame.strokeRoundedRect(524, 374, size, size, frameStyle));
+        this.add.text(548, 384, '4', textAnswerStyle);
         
         // Answers
         this.images = [
-            this.add.image(432, 260, 'animals'),
-            this.add.image(636, 260, 'animals'),
-            this.add.image(432, 464, 'animals'),
-            this.add.image(636, 464, 'animals')
+            this.add.image(412, 260, 'animals'),
+            this.add.image(616, 260, 'animals'),
+            this.add.image(412, 464, 'animals'),
+            this.add.image(616, 464, 'animals')
         ];
         for (var i = 0; i < 4; i++) {
             const image = this.images[i];
             image.setScale(0.425).setInteractive({ cursor: 'pointer' });
             image.on('pointerdown', (event) => {
+                if (this.flagWaiting) return;
                 const choice = image.frame.name.split('.')[0];
                 console.log('You chose: ' + choice);
                 this.checkAnswer(choice);
@@ -113,6 +114,8 @@ export default class Level01 extends Phaser.Scene {
     }
 
     generateQuestion() {
+        this.flagWaiting = false;
+
         const theme = this.themes[Math.floor(Math.random() * this.themes.length)];
         const params = this.random4unique(this[theme].length - 1);
         // console.log(params);
@@ -132,6 +135,7 @@ export default class Level01 extends Phaser.Scene {
         ' select the ' + this.param3 + ',\notherwise select the ' + this.param4 + '.';
 
         this.answer = first + 1 == second ? this.param3 : this.param4;
+
         console.log(first, second, third, fourth);
         console.log('Answer: ' + this.answer);
     }
@@ -146,9 +150,11 @@ export default class Level01 extends Phaser.Scene {
             this.result.setTexture('wrong').setVisible(true);
         }
 
+        this.flagWaiting = true;
+
         setTimeout(() => {
+            this.result.setTexture('right').setVisible(false);
             this.generateQuestion();
-            this.result.setVisible(false);
         }, 2000);
     }
 
