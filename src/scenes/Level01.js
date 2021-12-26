@@ -3,35 +3,35 @@ import Phaser from '../lib/phaser.js';
 export default class Level01 extends Phaser.Scene {
     themes = ['animals', 'clothes', 'fruits', 'housewares', 'occupations', 'vegetables'];
     animals = [
-        'alligator', 'camel', 'cat', 'cow', 'dog',
-        'duck', 'elephant', 'fish', 'giraffe',
-        'horse', 'kangaroo', 'lion', 'monkey',
-        'rabbit', 'snake', 'turtle', 'zebra'
+        'алигаторот', 'камилата', 'мачката', 'кравата', 'кучето',
+        'патката', 'слонот', 'рибата', 'жирафата',
+        'коњот', 'кенгурот', 'лавот', 'мајмунот',
+        'зајакот', 'змијата', 'желката', 'зебрата'
     ];
     clothes = [
-        'bag', 'belt', 'dress', 'flip flop', 'hat',
-        'pants', 'scarf', 'shoes', 'shorts', 'skirt',
-        'sunglasses', 'umbrella'
+        'чантата', 'каишот', 'фустанот', 'апостолките', 'шеширот',
+        'панталоните', 'марамата', 'чевлите', 'кратките панталони', 'сукњата',
+        'очилата', 'чадорот'
     ];
     fruits = [
-        'apple', 'banana', 'cherry', 'grape',
-        'lemon', 'orange', 'pear', 'pomegranate',
-        'strawberry', 'watermelon'
+        'јаболкото', 'бананата', 'црешата', 'грозјето',
+        'лимонот', 'портокалот', 'крушата', 'калинката',
+        'јагодата', 'лубеницата'
     ];
     housewares = [
-        'iron', 'kettle', 'lamp', 'oven', 'phone',
-        'refrigerator', 'speaker', 'television',
-        'toaster', 'vacuum cleaner', 'washing machine'
+        'пеглата', 'чајникот', 'ламбата', 'електричниот шпорет', 'телефонот',
+        'фрижидерот', 'звучникот', 'телевизорот',
+        'тостерот', 'правосмукалката', 'машината за перење'
     ];
     occupations = [
-        'artist', 'chef', 'doctor', 'farmer',
-        'firefighter', 'magician', 'musician',
-        'police', 'postman', 'repairman', 'waiter'
+        'уметникот', 'куварот', 'докторот', 'фармерот',
+        'пожарникарот', 'магионичарот', 'музичарот',
+        'полицаецот', 'поштарот', 'мајсторот', 'келнерот'
     ];
     vegetables = [
-        'broccoli', 'carrot', 'corn', 'cucumber',
-        'chili', 'eggplant', 'garlic', 'onion', 
-        'peas', 'potato', 'tomato'
+        'брокулата', 'морковот', 'пченката', 'краставицата',
+        'пиперката', 'модриот патлиџан', 'лукот', 'кромидот', 
+        'грашокот', 'компирот', 'доматот'
     ];
     constructor() {
         super("level-01");
@@ -130,9 +130,9 @@ export default class Level01 extends Phaser.Scene {
         this.param3 = this.images[third].frame.name.split('.')[0];
         this.param4 = this.images[fourth].frame.name.split('.')[0];
 
-        this.question.text = 'If the ' + this.param1 +
-        ' is in the box number ' + this.param2 +
-        ' select the ' + this.param3 + ',\notherwise select the ' + this.param4 + '.';
+        this.question.text = 'Ако ' + this.param1 +
+        ' се наоѓа во кутија број ' + this.param2 +
+        ' изберете го/ја ' + this.param3 + ',\nако не изберете го/ја ' + this.param4 + '.';
 
         this.answer = first + 1 == second ? this.param3 : this.param4;
 
