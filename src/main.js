@@ -1,7 +1,9 @@
 import Phaser from './lib/phaser.js';
 
 import Preload from './scenes/Preload.js';
+import Pause from './scenes/Pause.js';
 import Level01 from './scenes/Level01.js';
+import GameSummary from './scenes/GameSummary.js';
 
 export default new Phaser.Game({
     type: Phaser.AUTO,
@@ -11,6 +13,8 @@ export default new Phaser.Game({
     resolution: window.devicePixelRatio,
     scene: [
         Preload,
-        Level01
+        Level01,
+        Pause,
+        GameSummary
     ]
 });

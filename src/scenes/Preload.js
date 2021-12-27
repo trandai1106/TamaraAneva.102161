@@ -12,21 +12,33 @@ export default class Preload extends Phaser.Scene {
 
     preload() {
         // Title
-        const style = { color: '#000000', fontSize: 50, fontFamily: 'monospace' };
-        this.title = this.add.text(600, 140, 'On One Condition', style)
-            .setOrigin(0.5);
-        this.progressText = this.add.text(600, 240, 'Loading 0%', style)
-            .setOrigin(0.5);
+        this.title = this.add.text(512, 140, 'ON ONE CONDITION', { 
+            color: '#5e3075', 
+            fontSize: 90, 
+            fontFamily: 'monospace' 
+        }).setOrigin(0.5);
+        this.progressText = this.add.text(512, 270, 'Loading 0%', { 
+            color: '#5e3075', 
+            fontSize: 50, 
+            fontFamily: 'monospace' 
+        }).setOrigin(0.5);
 
         // Loading bar
         this.progressBar = this.add.graphics({ x: 300, y: 340 });
         this.processBarBorder = this.add.graphics({ x: 300, y: 340 });
-        this.processBarBorder.lineStyle(4, '0x000000', 1);
-        this.processBarBorder.strokeRect(0, 0, 600, 30);
+        this.processBarBorder.lineStyle(4, '0x30183C', 1);
+        this.processBarBorder.strokeRect(0, 0, 424, 30);
 
         // Load GUI
         this.load.image('right', 'assets/GUI/right.png');
         this.load.image('wrong', 'assets/GUI/wrong.png');
+        this.load.image('coin', 'assets/GUI/coin.png');
+        this.load.image('empty-coin', 'assets/GUI/empty-coin.png');
+        this.load.image('pause', 'assets/GUI/pause.png');
+        this.load.image('resume', 'assets/GUI/play.png');
+        this.load.image('refresh', 'assets/GUI/refresh.png');
+        this.load.image('star', 'assets/GUI/star-new.png');
+        this.load.image('empty-star', 'assets/GUI/empty-star-new.png');
 
         // Scene details
 
@@ -37,42 +49,32 @@ export default class Preload extends Phaser.Scene {
         this.load.atlas('occupations', 'assets/Sprites/occupations.png', 'assets/Sprites/occupations.json');
         this.load.atlas('vegetables', 'assets/Sprites/vegetables.png', 'assets/Sprites/vegetables.json');
 
-        // Load Mossy
-        // this.load.spritesheet('mossy-idle', 'assets/sprites/BlueWizard/mossy-idle.png', {
-        //     frameWidth: 512,
-        //     frameHeight: 512
-        // });
-
-        // Music  and sound effect
-        // this.load.audio('bg-music-01', 'assets/sounds/bg-music-01.ogg');
+        // Sound effect
+        this.load.audio('right', 'assets/SFX/correct1.mp3');
+        this.load.audio('wrong', 'assets/SFX/wrong1.mp3');
+        this.load.audio('start', 'assets/SFX/starting.mp3');
+        this.load.audio('stop', 'assets/SFX/stopping.mp3');
 
         // Loading statement
         this.load.on('progress', (val) => {
             // Text
-            this.progressText.text = 'Loading ' + (Math.round(val * 100)) + '%';
+            this.progressText.text = 'Се вчитува ' + (Math.round(val * 100)) + '%';
             // Bar
             this.progressBar.clear();
-            this.progressBar.fillStyle('0x55a455', 1);
-            this.progressBar.fillRect(0, 0, val * 600, 30);
+            this.progressBar.fillStyle('0x5e3075', 1);
+            this.progressBar.fillRect(0, 0, val * 424, 30);
         }, this);
     }
 
     create() {
-        // this.anims.create({
-        //     key: "anim-thunder",
-        //     frameRate: 18,
-        //     frames: this.anims.generateFrameNumbers("thunder", { start: 0, end: 7 }),
-        //     repeat: -1
-        // });
 
         // Delay and change scene
-        // this.time.addEvent({
-        //     delay: 1000,
-        //     callback: () => {
-        //         this.scene.start('level-01');
-        //     },
-        //     callbackScope: this
-        // });
-        this.scene.start('level-01');
+        this.time.addEvent({
+            delay: 2000,
+            callback: () => {
+                this.scene.start('level-01');
+            },
+            callbackScope: this
+        });
     }
 }
