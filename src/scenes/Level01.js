@@ -197,13 +197,6 @@ export default class Level01 extends Phaser.Scene {
         }, 9000);
 
         this.cameras.main.roundPixels = true;
-
-        // this.input.keyboard.on('keydown-A', (event) => {
-        //     this.generateQuestion();
-        // });
-        // this.input.keyboard.on('keydown-Z', (event) => {
-        //     this.countDown();
-        // });
     }
 
     update() {
@@ -223,8 +216,6 @@ export default class Level01 extends Phaser.Scene {
         for (var i = 0; i < 4; i++) {
             this.images[i].setTexture(theme, this[theme][params[i]] + '.png');
         }
-        //console.log(this[theme][params[0]], this[theme][params[1]], this[theme][params[2]], this[theme][params[3]]);
-
         const { first, second, third, fourth } = this.random4param();
         this.param1 = this.images[first].frame.name.split('.')[0];
         this.param2 = second;
@@ -236,9 +227,6 @@ export default class Level01 extends Phaser.Scene {
         ' изберете го/ја ' + this.param3 + ',\nако не изберете го/ја ' + this.param4 + '.';
 
         this.answer = first + 1 == second ? this.param3 : this.param4;
-
-        //console.log(first, second, third, fourth);
-        //console.log('Answer: ' + this.answer);
     }
 
     checkAnswer(choice) {
@@ -266,9 +254,6 @@ export default class Level01 extends Phaser.Scene {
     }
 
     random4param() {
-        // return 4 numbers, 
-        // first, third and fourth in [0, 3], different
-        // second in [1, 4]
         var first, second, third, fourth;
         first = Math.floor(Math.random() * 4);
         second = Math.floor(Math.random() * 4) + 1;
@@ -282,7 +267,6 @@ export default class Level01 extends Phaser.Scene {
     }
 
     random4unique(maxIncluded) {
-        // return 4 numbers, in [0, maxIncluded], and different
         maxIncluded++;
         var first, second, third, fourth;
         var params = [];

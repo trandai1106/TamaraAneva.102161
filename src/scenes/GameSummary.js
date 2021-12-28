@@ -25,17 +25,6 @@ export default class Pause extends Phaser.Scene {
             color: '#727272'
         }).setOrigin(0.5);
 
-        // this.add.text(512, 300, 'Изберете ја фотографијата'
-        // +'\nшто е соодветна за дадениот услов.'
-        // +'\n\nРазгледувајки го секој услов еден по еден'
-        // +'\nи потоа да се оцени како целина'
-        // +'\nќе имаме полесно решение.', {
-        //     fontFamily: 'sans-serif',
-        //     fontSize: '24px',
-        //     color: '#727272',
-        //     align: 'center'
-        // }).setOrigin(0.5);
-
         for (var i = 0; i < this.stars ; i++) {
             this.add.image(this.starsPositionX[i], 280, 'star').setScale(0.5);
         }

@@ -42,9 +42,6 @@ export default class Pause extends Phaser.Scene {
         graphic.strokeRoundedRect(405, 405, 70, 70, 16);
         graphic.strokeRoundedRect(549, 405, 70, 70, 16);
 
-        // Buttons
-        // this.add.image(405, 405, 'pause');
-        
         // Background button
         this.add.rectangle(0, 0, 70, 56, 0x5E3075).setOrigin(0); 
         this.resumeButton = this.add.image(40, 28, 'resume')
