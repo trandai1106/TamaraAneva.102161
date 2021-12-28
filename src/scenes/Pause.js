@@ -5,11 +5,6 @@ export default class Pause extends Phaser.Scene {
         super("pause");
     }
 
-    init(data) {
-        this.playingMusic = data.playingMusic;
-        this.sceneKey = data.sceneKey;
-    }
-
     create() {
         // Background notification
         var graphic = this.add.graphics();

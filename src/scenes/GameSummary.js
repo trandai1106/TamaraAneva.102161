@@ -7,7 +7,6 @@ export default class Pause extends Phaser.Scene {
 
     init({ stars }) {
         this.stars = stars ? stars : 0;
-        //console.log('summary: ' + this.stars + ' stars')
     }
 
     create() {
