@@ -12,7 +12,7 @@ export default class Preload extends Phaser.Scene {
 
     preload() {
         // Title
-        this.title = this.add.text(512, 140, 'ON ONE CONDITION', { 
+        this.title = this.add.text(512, 140, 'Под еден услов', { 
             color: '#5e3075', 
             fontSize: 90, 
             fontFamily: 'monospace' 

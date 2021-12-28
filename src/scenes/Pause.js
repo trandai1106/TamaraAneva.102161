@@ -17,7 +17,7 @@ export default class Pause extends Phaser.Scene {
         graphic.fillRoundedRect(272, 140, 480, 300, 32);
 
         // Text
-        this.add.text(512, 190, 'ON ONE CONDITION', {
+        this.add.text(512, 190, 'Под еден услов', {
             fontFamily: 'sans-serif',
             fontSize: '28px',
             fontStyle: 'bolder',

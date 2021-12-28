@@ -79,7 +79,7 @@ export default class Level01 extends Phaser.Scene {
         });
 
         // Title
-        this.add.text(80, 28, 'ON ONE CONDITION', {
+        this.add.text(80, 28, 'Под еден услов', {
             fontFamily: 'sans-serif',
             fontSize: '34px',
             color: '#ffffff'
